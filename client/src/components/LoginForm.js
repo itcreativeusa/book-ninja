@@ -45,10 +45,10 @@ const LoginForm = () => {
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
-          show={showAlert}
+          show={showAlert || error} // Show alert if error is truthy
           variant="danger"
         >
-          Something went wrong with your login credentials!
+          {error ? "Something went wrong with your login credentials!" : null}
         </Alert>
         <Form.Group>
           <Form.Label>Email</Form.Label>

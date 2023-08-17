@@ -54,13 +54,14 @@ const SignupForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert
+      <Alert
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
           variant="danger"
         >
           Something went wrong with your signup!
+          {errorMessage && <p>{errorMessage}</p>}
         </Alert>
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
