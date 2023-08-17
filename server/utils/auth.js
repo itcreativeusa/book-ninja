@@ -38,6 +38,7 @@ module.exports = {
   },
 };
 
+// Export the functions
 module.exports = {
   authMiddleware,
   signToken,
