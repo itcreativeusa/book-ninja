@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Jumbotron,
   Container,
@@ -6,20 +6,17 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import { useQuery, useMutation } from "@apollo/client"; // Import the necessary hooks
-import { GET_ME } from "../utils/queries"; // Import the GET_ME query
-import { REMOVE_BOOK } from "../utils/mutations"; // Import the REMOVE_BOOK mutation
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_ME } from "../utils/queries";
+import { REMOVE_BOOK } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
-  // Use the useQuery hook to fetch user data
   const { loading, data } = useQuery(GET_ME);
-
-  // Use the useMutation hook to execute the REMOVE_BOOK mutation
   const [removeBook] = useMutation(REMOVE_BOOK);
+  const [deleteMessage, setDeleteMessage] = useState(""); // State for the feedback message
 
-  // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
   }
@@ -38,7 +35,12 @@ const SavedBooks = () => {
         variables: { bookId },
       });
 
-      // upon success, remove book's id from localStorage
+      // Update the feedback message state
+      setDeleteMessage(
+        `Successfully removed ${removedBookData.removeBook.title}`
+      );
+
+      // Remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
@@ -86,6 +88,8 @@ const SavedBooks = () => {
             );
           })}
         </CardColumns>
+        <div className="mt-2">{deleteMessage}</div>{" "}
+        {/* Display the feedback message */}
       </Container>
     </>
   );
