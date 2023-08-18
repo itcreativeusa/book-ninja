@@ -11,9 +11,10 @@ const SignupForm = () => {
     password: "",
   });
 
-  const [validated, setValidated] = useState(false); // Define the state for form validation
-
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+
+  // Use error variable from useMutation hook
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
@@ -35,12 +36,9 @@ const SignupForm = () => {
 
       Auth.login(data.addUser.token);
     } catch (err) {
-      console.error(err); // Log the error for debugging purposes
-
-      // Display the error to the user
+      console.error(err);
       setShowAlert(true);
-      // Error
-      setErrorMessage(err.message); 
+    }
 
     setUserFormData({
       username: "",
@@ -54,14 +52,13 @@ const SignupForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-      <Alert
+        <Alert
           dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
           variant="danger"
         >
-          Something went wrong with your signup!
-          {errorMessage && <p>{errorMessage}</p>}
+          {error && <div>{error.message}</div>}
         </Alert>
         <Form.Group>
           <Form.Label htmlFor="username">Username</Form.Label>
