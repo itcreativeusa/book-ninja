@@ -36,7 +36,9 @@ Clone the repo and run `npm install` in the root directory to install the depend
 ## Screenshots
 
 Screenshot located in `./img/` folder
-![About me page screenshot](./img/screenshot.png)
+![Book search screenshot](./img/screenshot-1.png)
+Screenshot located in `./img/` folder
+![Login screenshot](./img/screenshot-2.png)
 
 ## Credits
 
