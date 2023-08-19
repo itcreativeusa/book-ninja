@@ -8,8 +8,7 @@ https://github.com/itcreativeusa/book-ninja
 Deployed application link on GitHub Pages
 https://itcreativeusa.github.io/book-ninja
 
-A single-page application web developer portfolio. Application use React to render content. This portfolio helps not only to share projects for applying for jobs or working as a freelancer but also to share work with other developers and collaborate on projects.
-Appllication contain: About Me, All Projects, Contact, and Resume sections.
+Book Ninja web application is a Google Books API search engine built with GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's allow users to save book searches to the back end.
 
 ## Table of Contents
 
@@ -22,19 +21,17 @@ Appllication contain: About Me, All Projects, Contact, and Resume sections.
 
 ## Installation
 
-Clone the repo and run `npm install` in the root directory to install the dependencies. To use the application locally, run `npm start` in the root directory and navigate to http://localhost:3000 in your browser. The page will reload if you make edits.
+Clone the repo and run `npm install` in the root directory to install the dependencies. To use the application locally, run `npm run develop` in the root directory and navigate to http://localhost:3000 in your browser. The page will reload if you make edits.
 
 ## Technologies Used
 
-- React
-- React-DOM
-- React-Scripts
-- Bootstrap
-- gh-pages
+- Front-End: React, Apollo Client
+- Back-End: Node.js, Express.js, Apollo Server, MongoDB
+- API and Data: GraphQL, Google Books API
 
 ## Usage
 
-Open Github Pages link in your preferred web browser.
+- Search for books using the Google Books API and save them to the database.
 
 ## Screenshots
 
