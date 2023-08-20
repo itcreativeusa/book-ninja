@@ -10,29 +10,28 @@ module.exports = {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res
-        .status(401)
-        .json({ message: "Authorization token missing or invalid." });
+      // If there is no authorization token, proceed without user data.
+      return res;
     }
 
-    const token = authHeader.split(" ")[1];
-
+    const token = authHeader.split(" ")[1].trim();
+    // If there is no authorization token, proceed without user data.
     if (!token) {
-      return res
-        .status(401)
-        .json({ message: "Authorization token missing or invalid." });
+      return req;
     }
 
-    // verify token and get user data out of it
+    // if token can be verified, add the decoded user's data to the request so it can be accessed in the resolver
     try {
-      const { data } = jwt.verify(token, secret);
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-      next();
-    } catch (error) {
+    } catch {
       console.log("Invalid token");
-      return res.status(401).json({ message: "Invalid token." });
     }
+
+    // return the request object so it can be passed to the resolver as `context`
+    return req;
   },
+
   signToken: function ({ username, email, _id }) {
     const payload = { username, email, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
