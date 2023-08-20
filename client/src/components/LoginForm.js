@@ -8,7 +8,7 @@ import Auth from "../utils/auth";
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const [alert, setAlert] = useState("");
 
   const [loginUser, { error }] = useMutation(LOGIN_USER); // Initialize the loginUser mutation
 
@@ -28,16 +28,11 @@ const LoginForm = () => {
 
     try {
       const { data } = await loginUser({ variables: userFormData }); // Use the loginUser mutation
-
-      if (error) {
-        throw new Error("something went wrong!");
-      }
-
-      const token = data.loginUser.token;
+      const token = data.login.token;
       Auth.login(token);
     } catch (err) {
       console.error(err);
-      setShowAlert(true);
+      setAlert(err.message);
     }
 
     setUserFormData({
@@ -51,11 +46,11 @@ const LoginForm = () => {
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
+          onClose={() => setAlert("")}
+          show={alert !== ""}
           variant="danger"
         >
-          Something went wrong with your login credentials!
+          {alert}
         </Alert>
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
