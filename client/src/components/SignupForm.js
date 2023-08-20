@@ -49,6 +49,8 @@ const SignupForm = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+        {/* Display mutation error */}
+        {error && <Alert variant="danger">{error.message}</Alert>}
         <Alert
           dismissible
           onClose={() => setAlert("")}
