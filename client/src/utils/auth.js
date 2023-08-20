@@ -1,9 +1,5 @@
 // src/utils/auth.js
 import decode from "jwt-decode";
-const jwt = require("jsonwebtoken");
-
-const secret = "mysecretssshhhhhhh";
-const expiration = "2h";
 
 class AuthService {
   // get user data

@@ -4,7 +4,8 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import SearchBooks from "./pages/SearchBooks";
 import SavedBooks from "./pages/SavedBooks";
 import Navbar from "./components/Navbar";
-
+import { setContext } from "@apollo/client/link/context";
+// Construct our main GraphQL API endpoint
 const httpLink = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
