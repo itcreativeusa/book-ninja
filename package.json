@@ -17,7 +17,8 @@
   "author": "Kateryna Stetsenko",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "webpack": "^5.88.2"
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
