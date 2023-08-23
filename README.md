@@ -5,8 +5,8 @@
 Deployed application link on GitHub
 https://github.com/itcreativeusa/book-ninja
 
-Deployed application link on GitHub Pages
-https://itcreativeusa.github.io/book-ninja
+Deployed application link on Heroku
+https://book-ninja-770f73c35475.herokuapp.com/
 
 Book Ninja web application is a Google Books API search engine built with GraphQL API built with Apollo Server. The app was built using the MERN stack with a React front end, MongoDB database, and Node.js/Express.js server and API. It's allow users to save book searches to the back end.
 
